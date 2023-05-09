@@ -1,5 +1,7 @@
 package com.myshop.dto;
 
+import java.util.Date;
+
 public class User {
 	private	String id;
 	private	String pw;
@@ -10,6 +12,11 @@ public class User {
 	private	String regdate;
 	private int point;
 	private int visited;
+	
+	public User(){
+		Date now = new Date();
+		this.regdate = now.toString();
+	}
 	
 	public String getId() {
 		return id;

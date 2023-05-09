@@ -40,7 +40,6 @@ public class UserLoginProCtrl extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		
 		HttpSession ses = request.getSession();
 		String msg = "";
 		if(cnt==1){

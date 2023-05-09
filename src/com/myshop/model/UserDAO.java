@@ -26,7 +26,10 @@ public class UserDAO {
 	String key = "%03x";
 	String qpw;
 	//로그인 SQL 실행
-	public int loginCheck(String id, String pw) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidParameterSpecException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException{
+	public int loginCheck(String id, String pw) throws InvalidKeyException,
+	NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
+	InvalidParameterSpecException, UnsupportedEncodingException, BadPaddingException,
+	IllegalBlockSizeException, InvalidAlgorithmParameterException{
 		int cnt = 0;
 		try {
 			con = Oracle11.getConnection();
@@ -54,7 +57,10 @@ public class UserDAO {
 		return cnt;
 	}
 	
-	public int loginPass(String id, String pw) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidParameterSpecException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException{
+	public int loginPass(String id, String pw) throws InvalidKeyException,
+	NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
+	InvalidParameterSpecException, UnsupportedEncodingException, BadPaddingException,
+	IllegalBlockSizeException, InvalidAlgorithmParameterException{
 		int cnt = 0;
 		try {
 			con = Oracle11.getConnection();
