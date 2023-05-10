@@ -1,13 +1,15 @@
 package com.myshop.dto;
 
 public class Product {
-	private	String	pcode;
-	private	String	pname;
-	private	String	weight;
-	private	String	color;
-	private	String	price;
-	private	String	pcomment;
-	private	String	amount;
+	private	String pcode;
+	private	String pname;
+	private	int Price;
+	private	String pcom;
+	private	int Amount;
+	private	String Pic1;
+	private	String Pic2;
+	private	String Pic3;
+	private String cate;
 	public String getPcode() {
 		return pcode;
 	}
@@ -20,36 +22,48 @@ public class Product {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	public String getWeight() {
-		return weight;
+	public int getPrice() {
+		return Price;
 	}
-	public void setWeight(String weight) {
-		this.weight = weight;
+	public void setPrice(int price) {
+		Price = price;
 	}
-	public String getColor() {
-		return color;
+	public String getPcom() {
+		return pcom;
 	}
-	public void setColor(String color) {
-		this.color = color;
+	public void setPcom(String pcom) {
+		this.pcom = pcom;
 	}
-	public String getPrice() {
-		return price;
+	public int getAmount() {
+		return Amount;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setAmount(int amount) {
+		Amount = amount;
 	}
-	public String getComment() {
-		return pcomment;
+	public String getPic1() {
+		return Pic1;
 	}
-	public void setComment(String comment) {
-		this.pcomment = comment;
+	public void setPic1(String pic1) {
+		Pic1 = pic1;
 	}
-	public String getAmount() {
-		return amount;
+	public String getPic2() {
+		return Pic2;
 	}
-	public void setAmount(String amount) {
-		this.amount = amount;
+	public void setPic2(String pic2) {
+		Pic2 = pic2;
+	}
+	public String getPic3() {
+		return Pic3;
+	}
+	public void setPic3(String pic3) {
+		Pic3 = pic3;
+	}
+	public String getCate() {
+		return cate;
+	}
+	public void setCate(String cate) {
+		this.cate = cate;
 	}
 	
-
+	
 }
