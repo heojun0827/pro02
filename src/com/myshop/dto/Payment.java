@@ -1,18 +1,18 @@
 package com.myshop.dto;
 
 public class Payment {
-	private	String paynumber;
+	private	String pnum;
 	private	String id;
-	private	String order_num;
-	private	String paymethod;
-	private	String method_num;
-	private	int pamount;
-	private	String setday;
-	public String getPaynumber() {
-		return paynumber;
+	private	String ocode;
+	private	String ptype;
+	private	String ptnum;
+	private	int pprice;
+	private	String pdate;
+	public String getPnum() {
+		return pnum;
 	}
-	public void setPaynumber(String paynumber) {
-		this.paynumber = paynumber;
+	public void setPnum(String pnum) {
+		this.pnum = pnum;
 	}
 	public String getId() {
 		return id;
@@ -21,34 +21,35 @@ public class Payment {
 		this.id = id;
 	}
 	public String getOcode() {
-		return order_num;
+		return ocode;
 	}
-	public void setOcode(String order_num) {
-		this.order_num = order_num;
+	public void setOcode(String ocode) {
+		this.ocode = ocode;
 	}
-	public String getPaymethod() {
-		return paymethod;
+	public String getPtype() {
+		return ptype;
 	}
-	public void setPaymethod(String paymethod) {
-		this.paymethod = paymethod;
+	public void setPtype(String ptype) {
+		this.ptype = ptype;
 	}
-	public String getNumber() {
-		return method_num;
+	public String getPtnum() {
+		return ptnum;
 	}
-	public void setNumber(String method_num) {
-		this.method_num = method_num;
+	public void setPtnum(String ptnum) {
+		this.ptnum = ptnum;
 	}
-	public int getPamount() {
-		return pamount;
+	public int getPprice() {
+		return pprice;
 	}
-	public void setPamount(int pamount) {
-		this.pamount = pamount;
+	public void setPprice(int pprice) {
+		this.pprice = pprice;
 	}
-	public String getSetday() {
-		return setday;
+	public String getPdate() {
+		return pdate;
 	}
-	public void setSetday(String setday) {
-		this.setday = setday;
+	public void setPdate(String pdate) {
+		this.pdate = pdate;
 	}
+	
 	
 }

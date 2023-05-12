@@ -43,3 +43,38 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<style>
+/* 마우스 롤 오버시 스타일 */
+.dropdown-toggle::after { transition: transform 0.15s linear;}
+.show.dropdown .dropdown-toggle::after {transform: translateY(3px);}
+.dropdown-menu {margin-top: 0;} /* hover 메뉴때문에 넣음 */
+</style>
+<script>
+/* 마우스 롤 오버시 스크립트 */
+$(document).ready(function(){
+	var $dropdown = $(".navbar-nav .dropdown");
+	var $dropdownToggle = $(".dropdown-toggle");
+	var $dropdownMenu = $(".dropdown-menu");
+	var showClass = "show";
+	$(window).on("load resize", function() {
+		if (this.matchMedia("(min-width: 768px)").matches) {
+			$dropdown.hover(
+				function() {
+					var $this = $(this);
+					$this.addClass(showClass);
+					$this.find($dropdownToggle).attr("aria-expanded", "true");
+					$this.find($dropdownMenu).addClass(showClass);
+				},
+				function() {
+					var $this = $(this);
+					$this.removeClass(showClass);
+					$this.find($dropdownToggle).attr("aria-expanded", "false");
+					$this.find($dropdownMenu).removeClass(showClass);
+				}
+			);
+		} else {
+			$dropdown.off("mouseenter mouseleave");
+		}
+	});
+});
+</script>

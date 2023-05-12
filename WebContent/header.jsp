@@ -16,7 +16,7 @@
 				</c:if>
 				<c:if test="${!empty sid }">
 					<li><a href="${path }/MyPage.do">마이페이지</a></li>
-					<li><a href="${path }/MyBasket.do">장바구니</a></li>
+					<li><a href="${path }/MyBasket.do?id=${sid }">장바구니</a></li>
 					<li><a href="${path }/UserLogout.do">로그아웃</a></li>
 				</c:if>
 				<c:if test="${sid=='admin' }">

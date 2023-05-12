@@ -128,7 +128,7 @@ public class UserDAO {
 		int cnt = 0;
 		try {
 			con = Oracle11.getConnection();
-			pstmt = con.prepareStatement(Oracle11.INSET_USER);
+			pstmt = con.prepareStatement(Oracle11.INSERT_USER);
 			pstmt.setString(1, user.getId());
 			pstmt.setString(2, user.getPw());
 			pstmt.setString(3, user.getName());
@@ -277,4 +277,31 @@ public class UserDAO {
 		}
 		return uList;
 	}
+	public User getTel(String id) {
+		User user = new User();
+		try {
+			con = Oracle11.getConnection();
+			pstmt = con.prepareStatement(Oracle11.USER_LOGIN);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				user.setId(rs.getString("id"));
+				user.setName(rs.getString("name"));
+				user.setTel(rs.getString("tel"));
+				user.setEmail(rs.getString("email"));
+				user.setRegdate(rs.getString("regdate"));
+				user.setAddr(rs.getString("addr"));
+				user.setPoint(rs.getInt("point"));
+				user.setVisited(rs.getInt("visited"));
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, con);
+		}
+		return user;
+	}
+	
 }

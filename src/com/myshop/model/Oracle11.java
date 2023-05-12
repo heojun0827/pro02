@@ -12,8 +12,7 @@ public class Oracle11 {
 	static String user = "system";
 	static String pass = "1234";
 	
-	
-	
+	//공지사항 관련 SQL
 	final static String NOTICE_SELECT_ALL = "select * from notice order by idx desc";
 	final static String NOTICE_SELECT_ONE = "select * from notice where idx=?";
 	final static String NOTICE_READCOUNT_UPDATE = "update notice set readcnt=readcnt+1 where idx=?";
@@ -22,21 +21,63 @@ public class Oracle11 {
 	final static String UPDATE_NOTICE2 = "update notice set title=?, content=?, resdate=sysdate where idx=?";
 	final static String DELETE_NOTICE = "delete from notice where idx=?";
 	
+	//회원 관련 SQL
 	final static String USER_SELECT_ALL = "select * from user order by regdate desc";
 	final static String USER_LOGIN =  "select * from user1 where id=?";
 	final static String USER_VISIT_COUNT =  "update user1 set visited=visited+1 where id=?";
-	final static String INSET_USER = "insert into user1(id, pw, name, tel, addr, email) values (?,?,?,?,?,?)";
+	final static String INSERT_USER = "insert into user1(id, pw, name, tel, addr, email) values (?,?,?,?,?,?)";
 	final static String UPDATE_USER = "update user1 set pw=?, name=?, tel=?, addr=?, email=? where id=?";
 	final static String UPDATE_USER2 = "update user1 set name=?, tel=?, addr=?, email=? where id=?";
 	final static String DELETE_USER = "delete from user1 where id=?";
 	
-	
+	//상품 관련 SQL
 	final static String PRODUCT_CATENAME_SELECT = "select * from category where cate=?";
 	final static String PRODUCT_SELECT_ALL = "select * from product order by cate desc";
-	final static String PRODUCT_SELECT = "select * from product where pcode=?" ;
+	final static String PRODUCT_SELECT = "select * from product where pcode=?";
+	final static String PRODUCT_SOLDOUT_SELECT = "select * from product where amount<=0";
 	final static String PRODUCT_CATE_SELECT = "select * from product where cate=?";
 	final static String PRODUCT_CATE_SELECT2 = "select * from product where cate like ?||'%'";
 	final static String PRODUCT_CATE_SELECT3 = "select * from product where cate like concat(?, '%')";
+	final static String FIRST_CATEGORY_SELECT = "select distinct substr(cate,1,2) as ct, categroup from category group by substr(cate,1,2), categroup order by ct";
+	final static String SECOND_CATEGORY_SELECT = "select cate, catename from category where cate like ?||'%' order by cate";
+	final static String PCODE_GENERATOR = "select pcode from (select * from product where cate=? order by pcode desc) where rownum = 1";
+	final static String INSERT_PRODUCT = "insert into product values(?,?,?,?,?,?,?,?,?)";
+	final static String RECEIPT_PRODUCT = "update product set amount=amount+?, price=? where pcode=?";
+	final static String UPDATE_PRODUCT = "update product set amount=amount+?, price=? where pcode=?";
+	final static String UPDATE_PRODUCT2 = "update product set pname=?, price=?, pcom=?, amount=?, pic1=?, pic2=?, pic3=?, cate=? where pcode=?";
+	final static String SALES_PRODUCT = "update product set amount=amount-? where pcode=?";
+	final static String DELETE_PRODUCT = "delete from product where pcode=?";
+	
+	//장바구니 관련 SQL
+	final static String BASKET_SELECT_ALL = "select * from basket order by bnum desc";
+	final static String BASKET_SELECT_ALL2 = "select basket.bnum as bnum, basket.id as id, user1.name as name, basket.pcode as pcode, product.pname as pname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.pcode=product.pcode";
+	final static String BASKET_SELECT_BYID = "select * from basket where id=?";
+	final static String BASKET_SELECT_BYID2 = "select basket.bnum as bnum, basket.id as id, user1.name as name, basket.pcode as pcode, product.pname as pname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.pcode=product.pcode and basket.id=?";
+	final static String BASKET_SELECT_BYPRODUCT = "select * from basket where pcode=?";
+	final static String BASKET_SELECT_BYBNUM = "select * from basket where bnum=?";
+	final static String INSERT_BASKET = "insert into basket values (?,?,?,?)";
+	final static String DELETE_BASKET = "delete from basket where bnum=?";
+	final static String BNUM_GENERATOR = "select bnum from (select bnum from basket order by bnum desc) where rownum = 1";
+	
+	final static String OCODE_GENERATOR = "select ocode from (select * from buy order by ocode desc) where rownum = 1";
+	final static String PNUM_GENERATOR = "select pnum from (select * from payment order by pnum desc) where rownum = 1";
+	final static String ADD_SALES = "insert into buy values (?,?,?,?,?,default,?,?,?,?,?)";
+	final static String ADD_PAYMENT = "insert into payment values (?,?,?,?,?,?,default)";
+	final static String BUY_TRANS_BASKET = "delete from basket where bnum=?";
+	final static String BYID_BUY_LIST = "select * from buy where id=? order by ocode desc";
+	final static String BYID_BUY = "select * from buy where id=? and ocode=?";
+	final static String PAY_LIST = "select * from payment order by pnum desc";
+	final static String BYOCODE_PAY = "select * from payment where ocode=? order by pnum desc";
+	final static String SALES_LIST = "select buy.ocode as ocode, buy.id as id, buy.pcode as pcode, buy.amount as amount, buy.price as price, buy.odate as odate, buy.ostate as ostate, buy.tel as tel, buy.dname as dname, buy.addr as addr, buy.dcode as dcode,payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from buy, payment where payment.ocode=buy.ocode order by buy.ocode";
+	final static String SALES_INFO = "select buy.ocode as ocode, buy.id as id, buy.pcode as pcode, buy.amount as amount, buy.price as price, buy.odate as odate, buy.ostate as ostate, buy.tel as tel, buy.dname as dname, buy.addr as addr, buy.dcode as dcode,payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from buy, payment where payment.ocode=buy.ocode and buy.ocode=? order by buy.ocode";
+	final static String BYID_SALES_LIST = "select buy.ocode as ocode, buy.id as id, buy.pcode as pcode, buy.amount as amount, buy.price as price, buy.odate as odate, buy.ostate as ostate, buy.tel as tel, buy.dname as dname, buy.addr as addr, buy.dcode as dcode,payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from buy, payment where payment.ocode=buy.ocode and buy.id=? order by buy.ocode";
+	final static String BYID_GET_SALE = "select buy.ocode as ocode, buy.id as id, buy.pcode as pcode, buy.amount as amount, buy.price as price, buy.odate as odate, buy.ostate as ostate, buy.tel as tel, buy.dname as dname, buy.addr as addr, buy.dcode as dcode, payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from buy, payment where payment.ocode=buy.ocode and id=? and buy.ocode=?";
+	final static String UPDATE_SURVEY = "update buy set dname=?, dcode=?, ostate=? where ocode=?";
+	final static String DELETE_BUY = "delete from buy where ocode=?";
+	final static String DELETE_PAYMENT = "delete from payment where ocode=?";
+	final static String RETURN_PRODUCT = "update product set amount=amount+? where pcode=?";
+	final static String RETURN_SALES = "update buy set ostate='반품요청' where ocode=?";
+	final static String OK_SALES = "update buy set ostate='구매완료' where ocode=?";
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName(driver);
