@@ -34,6 +34,7 @@ public class UpdateProductProCtrl extends HttpServlet {
 		
 		int n = 0;
 		String pcode = "";
+		String cate = "";
 		String[] fileName = new String[3];
 		String[] oriFileName = new String[3];
 		ProductDAO dao = new ProductDAO();
@@ -100,7 +101,7 @@ public class UpdateProductProCtrl extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("UpdateProduct.do?pcode="+pcode);
 			view.forward(request, response);
 		} else { //상품 수정 성공시 목록으로 가기
-			response.sendRedirect("ProductList.do");
+			response.sendRedirect("ProductList.do?cate");
 		}
 	}
 }

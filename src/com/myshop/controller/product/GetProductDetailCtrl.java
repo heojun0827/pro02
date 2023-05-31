@@ -1,6 +1,7 @@
 package com.myshop.controller.product;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.myshop.dto.Product;
+import com.myshop.dto.Review;
 import com.myshop.model.ProductDAO;
+import com.myshop.model.ReviewDAO;
 
 @WebServlet("/ProductDetail.do")
 public class GetProductDetailCtrl extends HttpServlet {
@@ -28,8 +31,12 @@ public class GetProductDetailCtrl extends HttpServlet {
 		String cate = pro.getCate();	 
 		HashMap<String, String> cateMap = dao.getCategory(cate);
 		
+		ReviewDAO rdao = new ReviewDAO();
+		ArrayList<Review>rList = rdao.getPcodeByReview(pcode);
+		
 		request.setAttribute("pro", pro);	//한 개의 상품 정보
 		request.setAttribute("cateMap", cateMap);	//카테고리 정보
+		request.setAttribute("rList", rList);
 		
 		//디스패치로 view를 생성하여 proList.jsp로 요청 받은 proList를 포워드
 		RequestDispatcher view = request.getRequestDispatcher("/product/proDetail.jsp");

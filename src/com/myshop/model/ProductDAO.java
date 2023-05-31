@@ -171,9 +171,6 @@ public class ProductDAO {
 		HashMap<String, String> cateMap = new HashMap<String, String>();
 		String cateGroup = "";
 		String cateName = "";
-		if(cate.length()==2){
-			cate = cate + "01";
-		}
 		try {
 			con = Oracle11.getConnection();
 			pstmt = con.prepareStatement(Oracle11.PRODUCT_CATENAME_SELECT);

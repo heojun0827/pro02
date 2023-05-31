@@ -1,6 +1,6 @@
 package com.myshop.model;
 
-import SalesVO;
+import com.myshop.vo.SalesVO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

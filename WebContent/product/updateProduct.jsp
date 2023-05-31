@@ -28,6 +28,7 @@
 						</th>
 						<td>
 							<span id="pcodetxt">${catename } (${pro.cate })</span>
+							<input type="hidden" name="cate1" id="cate1" value="${pro.cate }">
 						</td>						
 					</tr>
 					<tr>

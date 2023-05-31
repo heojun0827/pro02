@@ -1,17 +1,17 @@
 package com.myshop.dto;
 
 public class Review {
-	private	String tnumber;
+	private	String rcode;
 	private	String id;
-	private	String order_num;
-	private	String writing_date;
-	private	String review;
-	private	int rating;
-	public String getTnumber() {
-		return tnumber;
+	private	String ocode;
+	private	String resdate;
+	private	String rcontent;
+	private	int rpoint;
+	public String getRcode() {
+		return rcode;
 	}
-	public void setTnumber(String tnumber) {
-		this.tnumber = tnumber;
+	public void setRcode(String rcode) {
+		this.rcode = rcode;
 	}
 	public String getId() {
 		return id;
@@ -20,28 +20,28 @@ public class Review {
 		this.id = id;
 	}
 	public String getOcode() {
-		return order_num;
+		return ocode;
 	}
-	public void setOcode(String order_num) {
-		this.order_num = order_num;
+	public void setOcode(String ocode) {
+		this.ocode = ocode;
 	}
-	public String getWriting_date() {
-		return writing_date;
+	public String getResdate() {
+		return resdate;
 	}
-	public void setWriting_date(String writing_date) {
-		this.writing_date = writing_date;
+	public void setResdate(String resdate) {
+		this.resdate = resdate;
 	}
-	public String getReview() {
-		return review;
+	public String getRcontent() {
+		return rcontent;
 	}
-	public void setReview(String review) {
-		this.review = review;
+	public void setRcontent(String rcontent) {
+		this.rcontent = rcontent;
 	}
-	public int getRating() {
-		return rating;
+	public int getRpoint() {
+		return rpoint;
 	}
-	public void setRating(int rating) {
-		this.rating = rating;
+	public void setRpoint(int rpoint) {
+		this.rpoint = rpoint;
 	}
 	
 }	

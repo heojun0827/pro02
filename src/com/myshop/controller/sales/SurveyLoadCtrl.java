@@ -38,9 +38,10 @@ public class SurveyLoadCtrl extends HttpServlet {
 		SalesVO sale = sdao.getSales(ocode);
 		
 		//상품명 로딩
+		System.out.println("상품명로딩 전");
 		Product pro = pdao.getProduct(sale.getPcode()); 
 		sale.setPname(pro.getPname());
-		
+		System.out.println("상품명로딩 후");
 		//사용자 이름 로딩
 		User user = new User();
 		try {

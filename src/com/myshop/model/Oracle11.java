@@ -59,6 +59,7 @@ public class Oracle11 {
 	final static String DELETE_BASKET = "delete from basket where bnum=?";
 	final static String BNUM_GENERATOR = "select bnum from (select bnum from basket order by bnum desc) where rownum = 1";
 	
+	//주문관련 SQL
 	final static String OCODE_GENERATOR = "select ocode from (select * from buy order by ocode desc) where rownum = 1";
 	final static String PNUM_GENERATOR = "select pnum from (select * from payment order by pnum desc) where rownum = 1";
 	final static String ADD_SALES = "insert into buy values (?,?,?,?,?,default,?,?,?,?,?)";
@@ -78,6 +79,38 @@ public class Oracle11 {
 	final static String RETURN_PRODUCT = "update product set amount=amount+? where pcode=?";
 	final static String RETURN_SALES = "update buy set ostate='반품요청' where ocode=?";
 	final static String OK_SALES = "update buy set ostate='구매완료' where ocode=?";
+	
+	//리뷰관련SQL
+	final static String REVIEW_PRODUCT = "select * from product where pcode = (select pcode from buy where ocode=?)";
+	final static String RCODE_GENERATOR = "select rcode from (select * from review order by rcode desc) where rownum = 1";
+	final static String ADD_REVIEW = "insert into review values (?,?,?,default,?,?)";
+	final static String PCODEBY_REVIEW = "select * from review where ocode=(select ocode from buy where pcode=?) order by rcode desc";
+	final static String RCODEBY_REVIEW = "select * from review where rcode=?";
+	final static String ALL_REVIEW = "select * from review order by rcode desc";
+	final static String UPDATE_REVIEW = "update review set resdate=sysdate, rcontent=?, rpoint=? where id=? and rcode=?";
+	final static String DELETE_REVIEW = "delete from review where rcode=?";
+	
+	//QnA관련SQL
+	final static String QNO_GENERATOR = "select qno from (select * from qna order by qno desc) where rownum = 1";
+	final static String ADD_QNA = "insert into qna values (?,?,?,?,sysdate,1,?,0)";
+	final static String ADD_REPLY = "insert into qna values (?,?,?,?,sysdate,2,?,0)";
+	final static String QNA_LIST = "select * from qna order by parno desc, qno asc";
+	final static String QNA_SELECT = "select * from qna where parno=? order by qno asc";
+	final static String QNA_SELECT_ONE = "select * from qna where qno=?";
+	final static String REPLY_LIST = "select * from qna where parno=? and lev=2 order by qno asc";
+	final static String REPLY_SELECT = "select * from qna where parno=? and lev=2 order by qno asc";
+	final static String REPLY_SELECT_ONE = "select * from qna where lev=2 and qno=? order by qno asc";
+	final static String UPDATE_QNA = "update qna set title=?, content=? where qno=?";
+	final static String DELETE_QNA = "delete from qna where parno=?";
+	final static String DELETE_REPLY = "delete from qna where qno=?";
+	
+	//FAQ관련SQL
+	final static String FNO_GENERATOR = "select fno from (select * from faq order by fno desc) where rownum = 1";
+	final static String ADD_FAQ = "insert into faq values (?,?,?,sysdate)";
+	final static String UPDATE_FAQ = "update faq set fquestion=?, fanswer=? where fno=?";
+	final static String DELETE_FAQ = "delete from faq where fno=?";
+	final static String GET_FAQ = "select * from faq order by fno asc";
+	final static String FAQ_SELECT_ONE = "select * from faq where fno=?"; 
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName(driver);

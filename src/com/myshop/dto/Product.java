@@ -3,12 +3,12 @@ package com.myshop.dto;
 public class Product {
 	private	String pcode;
 	private	String pname;
-	private	int Price;
+	private	int price;
 	private	String pcom;
-	private	int Amount;
-	private	String Pic1;
-	private	String Pic2;
-	private	String Pic3;
+	private	int amount;
+	private	String pic1;
+	private	String pic2;
+	private	String pic3;
 	private String cate;
 	public String getPcode() {
 		return pcode;
@@ -23,10 +23,10 @@ public class Product {
 		this.pname = pname;
 	}
 	public int getPrice() {
-		return Price;
+		return price;
 	}
 	public void setPrice(int price) {
-		Price = price;
+		this.price = price;
 	}
 	public String getPcom() {
 		return pcom;
@@ -35,28 +35,28 @@ public class Product {
 		this.pcom = pcom;
 	}
 	public int getAmount() {
-		return Amount;
+		return amount;
 	}
 	public void setAmount(int amount) {
-		Amount = amount;
+		this.amount = amount;
 	}
 	public String getPic1() {
-		return Pic1;
+		return pic1;
 	}
 	public void setPic1(String pic1) {
-		Pic1 = pic1;
+		this.pic1 = pic1;
 	}
 	public String getPic2() {
-		return Pic2;
+		return pic2;
 	}
 	public void setPic2(String pic2) {
-		Pic2 = pic2;
+		this.pic2 = pic2;
 	}
 	public String getPic3() {
-		return Pic3;
+		return pic3;
 	}
 	public void setPic3(String pic3) {
-		Pic3 = pic3;
+		this.pic3 = pic3;
 	}
 	public String getCate() {
 		return cate;
@@ -64,6 +64,6 @@ public class Product {
 	public void setCate(String cate) {
 		this.cate = cate;
 	}
-	
+
 	
 }
