@@ -53,7 +53,7 @@
 "논리적설계")
 ## 물리적 설계
 - 데이터베이스 ERD
-![물리적설계](./WebContent/img/physicaldesign.PNG 
+![물리적설계](./WebContent/img/physicaldesign.png 
 "물리적설계")
 ## 클래스 설계
 - 클래스 다이어그램
